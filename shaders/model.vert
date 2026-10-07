@@ -27,7 +27,7 @@ layout(location = 2) out vec4 outColorMod;
 
 void main()
 {
-    outUV = inUV;
+    outUV = vec2(inUV);
     outNormal = vec4(inNormal,0);
     outColorMod = ubo.color;
     gl_Position = ubo.proj*  ubo.model * ubo.view * vec4(inPosition,1.0);

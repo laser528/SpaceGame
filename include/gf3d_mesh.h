@@ -13,6 +13,7 @@
 #include "gf3d_pipeline.h"
 
 
+
 //forward declaration:
 typedef struct ObjData_S ObjData;
 
@@ -23,7 +24,7 @@ typedef struct
     GFC_Matrix4     view;
     GFC_Matrix4     proj;
     GFC_Vector4D    color;
-    GFC_Vector4D    camera;
+    /*GFC_Vector4D    camera;*/
 }MeshUBO;
 
 typedef struct
@@ -63,13 +64,13 @@ typedef struct
  * @param mesh_max the maximum allowed simultaneous meshes supported at once.  Must be > 0
  * @note keep in mind that many models will be comprised of multiple sub meshes.  So this number may need to be very large
  */
-void gf3d_mesh_init(Uint32 mesh_max);
+void gf3d_mesh_init(Uint32 mesh_max); //
 
 /**
  * @brief get a new empty model
  * @return NULL on error, or an empty model
  */
-Mesh *gf3d_mesh_new();
+Mesh *gf3d_mesh_new(); //
 
 /**
  * @brief load mesh data from an obj filename.
@@ -78,7 +79,7 @@ Mesh *gf3d_mesh_new();
  * @param filename the name of the file to load
  * @return NULL on error or Mesh data
  */
-Mesh *gf3d_mesh_load_obj(const char *filename);
+Mesh *gf3d_mesh_load_obj(const char *filename); //
 
 /**
  * @brief make an exact, but separate copy of the input mesh
@@ -99,7 +100,7 @@ void gf3d_mesh_move_vertices(Mesh *in, GFC_Vector3D offset,GFC_Vector3D rotation
  * @brief allocate a zero initialized mesh primitive
  * @return NULL on error or the primitive
  */
-MeshPrimitive *gf3d_mesh_primitive_new();
+MeshPrimitive *gf3d_mesh_primitive_new(); //
 
 
 /**
@@ -107,33 +108,33 @@ MeshPrimitive *gf3d_mesh_primitive_new();
  * @param count (optional, output) the number of attributes
  * @return a pointer to a vertex input attribute description array
  */
-VkVertexInputAttributeDescription * gf3d_mesh_get_attribute_descriptions(Uint32 *count);
+VkVertexInputAttributeDescription * gf3d_mesh_get_attribute_descriptions(/*Uint32 *count*/); //
 
 /**
  * @brief get the binding description for mesh based rendering
  * @return vertex input binding descriptions compatible with mesh data
  */
-VkVertexInputBindingDescription * gf3d_mesh_get_bind_description();
+VkVertexInputBindingDescription * gf3d_mesh_get_bind_description(); //
 
 /**
  * @brief free a mesh that has been loaded from memory
  */
-void gf3d_mesh_free(Mesh *mesh);
+void gf3d_mesh_free(Mesh *mesh); //
 
 /**
  * @brief needs to be called once at the beginning of each render frame
  */
-void gf3d_mesh_reset_pipes();
+void gf3d_mesh_reset_pipes(); // 
 
 /**
  * @brief called to submit all draw commands to the mesh pipelines
  */
-void gf3d_mesh_submit_pipe_commands();
+void gf3d_mesh_submit_pipe_commands(); //XXX
 
 /**
  * @brief get the current command buffer for the mesh system
  */
-VkCommandBuffer gf3d_mesh_get_model_command_buffer();
+VkCommandBuffer gf3d_mesh_get_model_command_buffer();  //XXX
 
 
 /**

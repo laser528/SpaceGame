@@ -2,6 +2,7 @@
 #define __MODEL_H__
 
 #include "gf3d_mesh.h"
+#include "gf3d_texture.h"
 
 typedef struct
 {
@@ -18,5 +19,18 @@ typedef struct {
 	Mesh*			 mesh;    
 
 }Model;
+
+void model_init_system(Uint32 modelCount);
+
+Model* gf3d_model_new();
+
+Model* gf3d_model_load_from_file(const char* filename);
+
+void gf3d_model_free(Model* model);
+
+void gf3d_model_close();
+
+void gf3d_model_queue_render(Model* model, GFC_Matrix4 modelMat, GFC_Color colorMod);
+
 
 #endif 
