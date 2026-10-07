@@ -182,5 +182,6 @@ MeshUBO gf3d_mesh_get_ubo(
     GFC_Matrix4 modelMat,
     GFC_Color colorMod);
 
+Pipeline* gf3d_mesh_get_pipe();
 
 #endif
