@@ -28,7 +28,7 @@
 #include "gf3d_commands.h"
 #include "gf3d_texture.h"
 #include "gf2d_sprite.h"
-#include "gf3d_model.h"
+#include "model.h"
 
 #include "gf3d_vgraphics.h"
 
