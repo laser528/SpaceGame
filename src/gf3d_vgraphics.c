@@ -199,6 +199,9 @@ void gf3d_vgraphics_init(const char *config)
     gf3d_command_system_init(16 * gf3d_swapchain_get_swap_image_count(), gf3d_vgraphics.device);
     gf3d_vgraphics.graphicsCommandPool = gf3d_command_graphics_pool_setup(gf3d_swapchain_get_swap_image_count());
 
+
+
+
     gf3d_vgraphics.enable_2d = 1;
     gf2d_sprite_manager_init(1024);
     renderPipe = gf2d_sprite_get_pipeline();
@@ -214,6 +217,7 @@ void gf3d_vgraphics_init(const char *config)
     gf3d_swapchain_create_depth_image();
     gf3d_swapchain_setup_frame_buffers(renderPipe);
     gf3d_vgraphics_semaphores_create();
+
 
 
 }

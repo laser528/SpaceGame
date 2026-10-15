@@ -90,6 +90,7 @@ Model* gf3d_model_load_from_file(const char* filename) {
 		slog("No Texture");
 		return NULL; 
 	}
+	slog("Model Loaded");
 	return mod;
 
 }
@@ -110,7 +111,6 @@ void gf3d_model_close() { // Remove all meshcounts
 }
 
 void gf3d_model_queue_render(Model* model, GFC_Matrix4 modelMat, GFC_Color colorMod) {
-	slog("Queue Render");
 	MeshUBO ubo = gf3d_mesh_get_ubo(modelMat, colorMod);
-	gf3d_mesh_queue_render(model->mesh, gf3d_mesh_get_pipe(), NULL, model->Texture);
+	gf3d_mesh_queue_render(model->mesh, gf3d_mesh_get_pipe(), &ubo, model->Texture);
 }
