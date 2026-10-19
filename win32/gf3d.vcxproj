@@ -68,18 +68,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\git\libs\SDL2_image-2.8.2\include;C:\git\libs\SDL2_mixer-2.8.0\include;C:\git\libs\SDL2_ttf-devel-2.20.0-VC\SDL2_ttf-2.20.0\include;C:\git\libs\SDL2-2.30.7\include;C:\git\libs\VulkanSDK\Include;C:\Users\19177\Desktop\schoolProjects\3dGame\SpaceGame\gfc\simple_logger\include;C:\Users\19177\Desktop\schoolProjects\3dGame\SpaceGame\gfc\simple_json\include;C:\Users\19177\Desktop\schoolProjects\3dGame\SpaceGame\gfc\include;C:\Users\19177\Desktop\schoolProjects\3dGame\SpaceGame\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\git\libs\SDL2_image-2.8.2\lib\x64;C:\git\libs\SDL2_mixer-2.8.0\lib\x64;C:\git\libs\SDL2_ttf-devel-2.20.0-VC\SDL2_ttf-2.20.0\lib\x64;C:\git\libs\SDL2-2.30.7\lib\x64;C:\git\libs\VulkanSDK\Lib;$(LibraryPath)</LibraryPath>
-<<<<<<< HEAD
-=======
     <LinkIncremental>true</LinkIncremental>
->>>>>>> 3DModelingPipeline
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>C:\git\libs\SDL2_image-2.8.2\include;C:\git\libs\SDL2_mixer-2.8.0\include;C:\git\libs\SDL2_ttf-devel-2.20.0-VC\SDL2_ttf-2.20.0\include;C:\git\libs\SDL2-2.30.7\include;C:\git\libs\VulkanSDK\Include;C:\Users\19177\Desktop\schoolProjects\3dGame\SpaceGame\gfc\simple_logger\include;C:\Users\19177\Desktop\schoolProjects\3dGame\SpaceGame\gfc\simple_json\include;C:\Users\19177\Desktop\schoolProjects\3dGame\SpaceGame\gfc\include;C:\Users\19177\Desktop\schoolProjects\3dGame\SpaceGame\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\git\libs\SDL2_image-2.8.2\lib\x64;C:\git\libs\SDL2_mixer-2.8.0\lib\x64;C:\git\libs\SDL2_ttf-devel-2.20.0-VC\SDL2_ttf-2.20.0\lib\x64;C:\git\libs\SDL2-2.30.7\lib\x64;C:\git\libs\VulkanSDK\Lib;$(LibraryPath)</LibraryPath>
-<<<<<<< HEAD
-=======
     <LinkIncremental>false</LinkIncremental>
->>>>>>> 3DModelingPipeline
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -118,14 +112,9 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-<<<<<<< HEAD
-      <OutputFile>C:\Users\19177\Desktop\schoolProjects\3dGame\SpaceGame\SpaceGame.exe</OutputFile>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_image.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
-=======
       <OutputFile>C:\Users\19177\Desktop\schoolProjects\3dGame\SpaceGame\gf3d.exe</OutputFile>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_image.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
->>>>>>> 3DModelingPipeline
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,14 +122,9 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-<<<<<<< HEAD
-      <OutputFile>C:\Users\19177\Desktop\schoolProjects\3dGame\SpaceGame\SpaceGame.exe</OutputFile>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_image.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
-=======
       <OutputFile>C:\Users\19177\Desktop\schoolProjects\3dGame\SpaceGame\gf3d.exe</OutputFile>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_image.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
->>>>>>> 3DModelingPipeline
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
