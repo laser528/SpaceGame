@@ -1,7 +1,56 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\",
+<<<<<<< HEAD
   "Documents": [],
+=======
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\src\\model.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\model.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\sky.model||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:models\\sky.model||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\src\\gf2d_sprite.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\gf2d_sprite.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\cube.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:models\\cube.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\dino.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:models\\dino.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\dino.model||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:models\\dino.model||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\cube.obj||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:models\\cube.obj||{58961B49-13E0-48C0-9258-13CBC4D40279}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\susanne.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:models\\susanne.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\src\\game.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\game.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\include\\model.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:include\\model.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\include\\gf3d_camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:include\\gf3d_camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+>>>>>>> 3DModelingPipeline
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +58,161 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+=======
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "cube.obj",
+              "DocumentMoniker": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\cube.obj",
+              "RelativeDocumentMoniker": "models\\cube.obj",
+              "ToolTip": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\cube.obj",
+              "RelativeToolTip": "models\\cube.obj",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQLSURBVDhPlVRLSKNXGL3/n8TEJCZGa6LGtxKrNT7widiICoJaBxWkSBG1G6sbF0LBld25qbZ14WZcjOBAK7RCDb6wPhjFWl1YX6hxiKDEmsb4SkxMTNJz/8RZdEiHHrgk/839zz3f\u002Bc4X8m9oNBrhxcWF1mazLWBZsX49Pj7OjImJEQSOBIfP5wt886O6ujpsfX1dd3d399vU1JRldHTUNTs7a76\u002Bvtavra0VlpWVSQJHg4IX\u002BCSNjY3yzs7OT7Ozszs3NjZ0S0tL0v39fT7IhCEhISrsR0GlBYotBoPhMfDae\u002BAIqTJKlp\u002Bf3wKSFzMzM2KUyV5dXZHb21sWSxgeHp6ak5PDRERE3FgsFvP5\u002BbmrpqZGVlBQIBYKhQxseuIIqWfDw8MFWVlZX4HsM71eL97b22MeH/0iXC4XsVqtjNPpFCQnJ2uKioocqamp\u002B9vb286RkZGi1tbWNLFYzMezFRd7KbNWIpF8Tz2an5\u002BX7OzsMF6vlyN7hkgkIlBCmpub7SkpKa/cbvdLh8MhkkqlP7AsG4dL9fD\u002B27q6ureM3W5fWFxczFtZWZEfHh6yeA7Q\u002BIFSCdSThoYGkpCQ4AkNDTVh2/T09MTDe\u002BnwVIRLTFC9sLW1NcBnGCb/8vJSajab3yOjoCXjd7K6ukoEAgH1PJ4uj8dDDg4OCKwg8FMNpdUVFRVOPqLzJi4urkStVitubm549/f3HJFcLifoKqeQkk5PT5OkpCTC4/G4C\u002BArd44C5HylUhmLpn3Ba29v/xON\u002BQTRiEL\u002BhOgsw\u002BfzSV5enrepqckG35w4KFpeXiZtbW10nyBKVBVHRs\u002BCzJeWlvaYnp7\u002BF1teXm6A9G8QmXmY6iwsLCR0wTNnRkbGa1TwHfdmAPCOPCeAAv6RqqoqF6J3gLPdPJjqReZuUd7fubm5TGJioiYzM9MNC0YnJyd/ROe9UNU0NzfHdRrVkLCwMEKtUalUpLKykgrYRWWvu7u79Xx6Cwy3y2SyP\u002BAFW1tb\u002B0D3JiYmfhobG9tVKBTKjo4OusUBz0Sr1XJjS5tCm/Pw8CBGtD5CyaJ3o0fHCRNwCaW7p6envw8MDBg2NzcdOPQxrPicKoyMjOQI0DyuOYgZMRqN1AIZSo/CuSsmwBcU9fX1DZiIX/r6\u002BrjOUsLn9Yz4\u002BHii0\u002Bk8LS0t92xg7z9BI9Tf30\u002BGhoZIV1cXV3IwvCs5GOCP/ezsbBeh3YiOjo5AZCJPTk54JhMdGELQPFJcXOzGX5sRFw9/kBDZvDs6OtpBTg2xsbEs5l6B6VChfB4aSUpKStylpaWH6PzP4\u002BPjrz5ISAHTfZh1GwiNmGsGc5uILiswOV4oO6VkaNrLnp4ef9r/D3p7e5XI7pew4poufP96cHBQ7f\u002BVkH8AGd8McJZ1\u002BjwAAAAASUVORK5CYII=",
+              "WhenOpened": "2026-10-08T17:41:26.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "dino.json",
+              "DocumentMoniker": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\dino.json",
+              "RelativeDocumentMoniker": "models\\dino.json",
+              "ToolTip": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\dino.json",
+              "RelativeToolTip": "models\\dino.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-10-08T17:15:15.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "cube.json",
+              "DocumentMoniker": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\cube.json",
+              "RelativeDocumentMoniker": "models\\cube.json",
+              "ToolTip": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\cube.json",
+              "RelativeToolTip": "models\\cube.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-10-08T17:10:59.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "gf2d_sprite.c",
+              "DocumentMoniker": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\src\\gf2d_sprite.c",
+              "RelativeDocumentMoniker": "src\\gf2d_sprite.c",
+              "ToolTip": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\src\\gf2d_sprite.c",
+              "RelativeToolTip": "src\\gf2d_sprite.c",
+              "ViewState": "AgIAAP0AAAAAAAAAAAAlwAEBAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-10-08T17:08:21.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "dino.model",
+              "DocumentMoniker": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\dino.model",
+              "RelativeDocumentMoniker": "models\\dino.model",
+              "ToolTip": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\dino.model",
+              "RelativeToolTip": "models\\dino.model",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-10-08T16:36:50.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "susanne.json",
+              "DocumentMoniker": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\susanne.json",
+              "RelativeDocumentMoniker": "models\\susanne.json",
+              "ToolTip": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\susanne.json",
+              "RelativeToolTip": "models\\susanne.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-10-08T16:36:37.171Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "sky.model",
+              "DocumentMoniker": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\sky.model",
+              "RelativeDocumentMoniker": "models\\sky.model",
+              "ToolTip": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\models\\sky.model",
+              "RelativeToolTip": "models\\sky.model",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-10-08T16:36:34.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "model.c",
+              "DocumentMoniker": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\src\\model.c",
+              "RelativeDocumentMoniker": "src\\model.c",
+              "ToolTip": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\src\\model.c",
+              "RelativeToolTip": "src\\model.c",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAwEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-10-07T22:21:26.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "game.c",
+              "DocumentMoniker": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\src\\game.c",
+              "RelativeDocumentMoniker": "src\\game.c",
+              "ToolTip": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\src\\game.c",
+              "RelativeToolTip": "src\\game.c",
+              "ViewState": "AgIAACcAAAAAAAAAAAAlwD8AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-10-08T15:57:42.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "gf3d_camera.h",
+              "DocumentMoniker": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\include\\gf3d_camera.h",
+              "RelativeDocumentMoniker": "include\\gf3d_camera.h",
+              "ToolTip": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\include\\gf3d_camera.h",
+              "RelativeToolTip": "include\\gf3d_camera.h",
+              "ViewState": "AgIAACEAAAAAAAAAAIAwwC0AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-10-07T22:26:41.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "model.h",
+              "DocumentMoniker": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\include\\model.h",
+              "RelativeDocumentMoniker": "include\\model.h",
+              "ToolTip": "C:\\Users\\19177\\Desktop\\schoolProjects\\3dGame\\SpaceGame\\include\\model.h",
+              "RelativeToolTip": "include\\model.h",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-10-07T22:21:22.676Z",
+              "EditorCaption": ""
+>>>>>>> 3DModelingPipeline
             }
           ]
         }

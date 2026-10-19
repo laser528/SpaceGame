@@ -1,6 +1,7 @@
 {
   "ExpandedNodes": [
     "",
+<<<<<<< HEAD
     "\\actors",
     "\\gfc",
     "\\gfc\\include",
@@ -8,5 +9,11 @@
     "\\gfc\\src",
     "\\models"
   ],
+=======
+    "\\models",
+    "\\src"
+  ],
+  "SelectedNode": "\\src\\model.c",
+>>>>>>> 3DModelingPipeline
   "PreviewInSolutionExplorer": false
 }

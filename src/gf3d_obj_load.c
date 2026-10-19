@@ -155,8 +155,10 @@ ObjData *gf3d_obj_load_from_file(const char *filename)
     obj = (ObjData*)gfc_allocate_array(sizeof(ObjData),1);
     if (!obj)return NULL;
     
-    gf3d_obj_get_counts_from_file(obj, mem,fileSize);
-    
+   
+    gf3d_obj_get_counts_from_file(obj, mem, fileSize);
+    slog("contents from file");
+
     obj->vertices = (GFC_Vector3D *)gfc_allocate_array(sizeof(GFC_Vector3D),obj->vertex_count);
     obj->normals = (GFC_Vector3D *)gfc_allocate_array(sizeof(GFC_Vector3D),obj->normal_count);
     obj->texels = (GFC_Vector2D *)gfc_allocate_array(sizeof(GFC_Vector2D),obj->texel_count);
@@ -166,7 +168,7 @@ ObjData *gf3d_obj_load_from_file(const char *filename)
     obj->faceTexels = (Face *)gfc_allocate_array(sizeof(Face),obj->face_count);
     
     gf3d_obj_load_get_data_from_file(obj, mem,fileSize);
-    
+    slog("load from file");
     
     gf3d_obj_get_bounds(obj);
     gf3d_obj_load_reorg(obj);

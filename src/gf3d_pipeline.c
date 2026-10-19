@@ -192,6 +192,7 @@ void gf3d_pipeline_queue_render(
         slog("failed to get a drawcall for pipeline");
         return;
     }
+    // Needs to be a or loop for each primitive
     drawCall->descriptorSet = gf3d_pipeline_get_descriptor_set(pipe, gf3d_vgraphics_get_current_buffer_frame());
     drawCall->vertexBuffer = vertexBuffer;
     drawCall->vertexCount = vertexCount;

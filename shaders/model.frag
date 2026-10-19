@@ -3,17 +3,17 @@
 
 layout(binding = 1) uniform sampler2D texSampler;
 
-layout(location = 0) in vec2 outUV;
-layout(location = 1) in vec4 outNormal;
-layout(location = 2) in vec4 outColorMod;
+layout(location = 0) in vec2 inUV;
+layout(location = 1) in vec4 inNormal;
+layout(location = 2) in vec4 inColorMod;
 
 layout(location = 0) out vec4 outColor;
 
 
 void main()
 {
-    vec4 texColor = texture(texSampler, fragTexCoord);
+    vec4 texColor = texture(texSampler, inUV);
     //Do some math for Normals
-    outColor = texColor * colorMod;
-    gl_FragDepth = drawOrder;
+    outColor = texColor * inColorMod;
+    //gl_FragDepth = drawOrder;
 }
