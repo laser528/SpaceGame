@@ -10,7 +10,7 @@ typedef struct
     GFC_Matrix4     view;
     GFC_Matrix4     proj;
     GFC_Vector4D    color;
- /*   GFC_Vector4D    camera;*/
+ /* GFC_Vector4D    camera;*/
 }ModelUBO;
 
 typedef struct {
