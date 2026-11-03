@@ -148,6 +148,7 @@ Mesh* gf3d_mesh_load_obj(const char* filename) {
         slog("failed to allocate prim buffer");
         return NULL;
     }
+
     slog("Mesh created");
     return mesh;
  /*   if (mesh) { 
@@ -230,7 +231,6 @@ void gf3d_mesh_queue_render(Mesh* mesh, Pipeline* pipe, void* uboData, Texture* 
     }*/
 
     c = gfc_list_get_count(mesh->primitives);
-
 
     for (int i = 0; i < c; i++) {
         prim = gfc_list_nth(mesh->primitives, i);

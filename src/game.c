@@ -49,10 +49,11 @@ int main(int argc,char *argv[])
     slog("gf3d begin");
     //gfc init
     gfc_input_init("config/input.cfg");
-    gfc_config_def_init();
+    gfc_config_def_init(); // DATABASE SETUP
     gfc_action_init(1024);
     //gf3d init
     gf3d_vgraphics_init("config/setup.cfg");
+    // gfc_sound_init_config(); AUDIO=
     gf2d_font_init("config/font.cfg");
     gf2d_actor_init(1000);
     
