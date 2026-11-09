@@ -17,6 +17,7 @@ typedef struct Entity
     GFC_Vector3D    translation; // Position
     GFC_Vector4D    quaternion;  // Rotation
     GFC_Vector3D    scale;
+    GFC_Matrix4     view;
 
     int (*Think)(Entity* self);
     int (*Update)(Entity* self);

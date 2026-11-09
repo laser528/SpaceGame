@@ -13,12 +13,16 @@ void Entity_Update() {
 	int count = gfc_list_get_count(entity_manager.entityList);
 	int i;
 	Entity ent;
-	GFC_Matrix4 view;
+	
+	
+
 	for (i = 0; i < count; i++) {
-		if (entity_manager.entityList[i]._refCount < 1) { continue; }
 		ent = entity_manager.entityList[i];
-		gfc_matrix4_from_vectors_q(view, ent.translation, ent.quaternion, ent.scale);
-		gf3d_model_queue_render(ent.model, view, ent.colorMod);
+		if (ent._refCount < 1) { continue; }
+		
+		gfc_matrix4_from_vectors(ent.view, gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(1, 1, 1));
+		/*gfc_matrix4_from_vectors_q(view, ent.translation, ent.quaternion, ent.scale);*/
+		gf3d_model_queue_render(ent.model, ent.view, ent.colorMod);
 	}
 
 }
@@ -37,12 +41,14 @@ Entity* Entity_load_from_file(const char* filename) {
 	}
 	ent->model = mod;
 	ent->scale = gfc_vector3d(1, 1, 1);
+	ent->quaternion = gfc_vector4d(0, 0, 0, 1);
 	ent->colorMod = GFC_COLOR_WHITE;
+	ent->_refCount += 1;
 	return ent;
 }
 
 void Entity_init_system(Uint32 entityCount) {
-	if (entityCount != 0) {
+	if (entity_manager.entityCount != 0) {
 		slog("Cannot init Model system, already initilized");
 		return;
 	}
