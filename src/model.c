@@ -38,6 +38,7 @@ void model_init_system(Uint32 modelCount) {
 	model_manager.modelCount = modelCount;
 	model_manager.modelList = gfc_allocate_array(sizeof(Model), modelCount);
 	gf3d_mesh_init(modelCount);
+	atexit(gf3d_model_close);
 }
 
 Model* gf3d_model_new() {
@@ -101,13 +102,12 @@ void gf3d_model_free(Model* model) {
 	/*if (mesh->_refCount > 0)return;*/
 }
 
+
+
 void gf3d_model_close() { // Remove all meshcounts
-	int i;
-	for (i = 0; i < model_manager.modelCount; i++) {
-		gf3d_mesh_free(&model_manager.modelList[i]);
-	}
-	free(model_manager.modelList);
 	memset(&model_manager, 0, sizeof(model_manager));
+	free(model_manager.modelList);
+	
 }
 
 void gf3d_model_queue_render(Model* model, GFC_Matrix4 modelMat, GFC_Color colorMod) {

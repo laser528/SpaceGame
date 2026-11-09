@@ -116,11 +116,11 @@ Mesh* gf3d_mesh_load_obj(const char* filename) {
 
     mesh = gf3d_mesh_get_by_filename(filename);
     if (mesh) { 
+        slog("Found mesh by filename %s", filename);
         mesh->_refCount++;
         return mesh; 
     }
-    slog("Failed to find mesh by filename %s", filename);
-
+   
     mesh = gf3d_mesh_new();
     if (!mesh) {
         slog("Cant allocate Mesh");
@@ -151,35 +151,6 @@ Mesh* gf3d_mesh_load_obj(const char* filename) {
 
     slog("Mesh created");
     return mesh;
- /*   if (mesh) { 
-        slog("mesh allocated");
-        strcpy(mesh->filename, filename);
-        prim = gf3d_mesh_primitive_new();
-        if (prim) {
-            slog("prim allocated");
-            obj = gf3d_obj_load_from_file(filename);
-            if (obj) {
-                slog("obj allocated");
-                prim->objData = obj;
-                gfc_list_append(mesh->primitives, prim);
-
-                if (gf3d_mesh_obj_buffer_create(mesh)) {
-                    return mesh;
-                }
-                
-            }
-            gf3d_obj_free(obj);
-            gf3d_mesh_free(mesh);
-            gf3d_mesh_primitive_free(prim);
-            slog("failed to load mesh primatives %s", filename);
-        }
-        slog("failed to alloacte mesh primative %s", filename);
-        
-        gf3d_mesh_free(mesh);
-        return NULL;
-    };
-    slog("Failed to load new mesh %s", filename);
-    return NULL;*/
     
 }
 

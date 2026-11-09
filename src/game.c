@@ -15,7 +15,7 @@
 #include "gf2d_font.h"
 #include "gf2d_actor.h"
 #include "gf2d_mouse.h"
-#include "model.h"
+#include "L_Entity.h"
 
 #include "gf3d_vgraphics.h"
 #include "gf3d_pipeline.h"
@@ -40,7 +40,7 @@ int main(int argc,char *argv[])
 {
     //local variables
     Sprite *bg;
-    Model* agu;
+    Entity* agu;
     GFC_Matrix4 mat = { 0 };
     GFC_Matrix4* view = gf3d_vgraphics_get_view_matrix();
     //initializtion    
@@ -63,9 +63,11 @@ int main(int argc,char *argv[])
     bg = gf2d_sprite_load_image("images/bg_flat.png");
     gf2d_mouse_load("actors/mouse.actor");
 
-    agu = gf3d_model_load_from_file("models/dino.model");
-    gfc_matrix4_from_vectors(mat, gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(1, 1, 1));
-    gfc_matrix4_view(*view, gfc_vector3d(10, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 1));
+
+    /*agu = Entity_load_from_file("models/dino.model");*/
+    //agu = gf3d_model_load_from_file("models/dino.model");
+    //gfc_matrix4_from_vectors(mat, gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(1, 1, 1));
+    //gfc_matrix4_view(*view, gfc_vector3d(10, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 1));
     // main game loop 
     
     // gf3d_vgraphics_get_view_matrix()
@@ -83,7 +85,8 @@ int main(int argc,char *argv[])
                 ///*gf2d_font_draw_line_tag("ALT+F4 to exit",FT_H1,GFC_COLOR_WHITE, gfc_vector2d(10,10));*/
                 gf2d_mouse_draw();
                 //3d draws
-                gf3d_model_queue_render(agu, mat, GFC_COLOR_WHITE);
+                /*gf3d_model_queue_render(agu, mat, GFC_COLOR_WHITE);*/
+                /*Entity_Update();*/
 
         gf3d_vgraphics_render_end();
         if (gfc_input_command_down("exit"))_done = 1; // exit condition
