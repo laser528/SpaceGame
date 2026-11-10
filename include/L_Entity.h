@@ -1,6 +1,9 @@
 #pragma once
 #include "simple_logger.h"
+#include "gfc_primitives.h"
+
 #include "model.h"
+
 
 typedef struct Entity Entity;
 
@@ -18,10 +21,13 @@ typedef struct Entity
     GFC_Vector4D    quaternion;  // Rotation
     GFC_Vector3D    scale;
     GFC_Matrix4     view;
+   
 
     int (*Think)(Entity* self);
     int (*Update)(Entity* self);
-    int (*Class)(Entity* self);
+
+    void*           data;
+  /*  int (*Class)(Entity* self);*/
 
 };
 

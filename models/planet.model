@@ -1,0 +1,7 @@
+{
+    "model":
+    {
+        "obj":"models/primitives/isphere.obj",
+        "texture":"models/dino/dino.png"
+    }
+}

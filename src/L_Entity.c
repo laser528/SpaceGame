@@ -20,8 +20,8 @@ void Entity_Update() {
 		ent = entity_manager.entityList[i];
 		if (ent._refCount < 1) { continue; }
 		
-		gfc_matrix4_from_vectors(ent.view, gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(1, 1, 1));
-		/*gfc_matrix4_from_vectors_q(view, ent.translation, ent.quaternion, ent.scale);*/
+		/*gfc_matrix4_from_vectors(ent.view, gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(1, 1, 1));*/
+		gfc_matrix4_from_vectors_q(ent.view, ent.translation, ent.quaternion, ent.scale);
 		gf3d_model_queue_render(ent.model, ent.view, ent.colorMod);
 	}
 
@@ -37,7 +37,7 @@ Entity* Entity_load_from_file(const char* filename) {
 	if (!mod) {
 		slog("Entity not found from file");
 		Entity_free(ent);
-		return;
+		return NULL;
 	}
 	ent->model = mod;
 	ent->scale = gfc_vector3d(1, 1, 1);
