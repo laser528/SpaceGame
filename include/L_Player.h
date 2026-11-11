@@ -10,6 +10,7 @@ typedef struct
 	int             speed;
 	int             radius; // to create bounding box in gfc primatives
 
+	GFC_Vector3D    cameraRotation;
 }PlayerData;
 
 

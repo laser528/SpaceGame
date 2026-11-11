@@ -68,7 +68,7 @@ void gf3d_mesh_init(Uint32 mesh_max) {
         gf3d_mesh_get_attribute_descriptions(),
         MESH_ATTRIBUTE_COUNT,
         sizeof(MeshUBO),
-        VK_INDEX_TYPE_UINT16 
+        VK_INDEX_TYPE_UINT32 
     );
 
     if (__DEBUG)slog("Mesh manager initiliazed");

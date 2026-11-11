@@ -8,6 +8,23 @@ typedef struct {
 
 static EntityManager entity_manager = { 0 };
 
+void Entity_Think() {
+	int count = gfc_list_get_count(entity_manager.entityList);
+	int i;
+	Entity ent;
+	
+
+
+	for (i = 0; i < count; i++) {
+		ent = entity_manager.entityList[i];
+		if (ent._refCount < 1) { continue; }
+		if (ent.Think != NULL) { 
+			ent.Think(&ent); 
+		}
+		
+	}
+
+}
 
 void Entity_Update() {
 	int count = gfc_list_get_count(entity_manager.entityList);

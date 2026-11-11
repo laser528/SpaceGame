@@ -16,6 +16,7 @@
 #include "gf2d_actor.h"
 #include "gf2d_mouse.h"
 #include "L_Entity.h"
+#include "L_Player.h"
 
 #include "gf3d_vgraphics.h"
 #include "gf3d_pipeline.h"
@@ -40,7 +41,7 @@ int main(int argc,char *argv[])
 {
     //local variables
     Sprite *bg;
-    Entity* agu;
+    Entity *agu, *agu2;
     GFC_Matrix4 mat = { 0 };
     GFC_Matrix4* view = gf3d_vgraphics_get_view_matrix();
     //initializtion    
@@ -64,10 +65,12 @@ int main(int argc,char *argv[])
     gf2d_mouse_load("actors/mouse.actor");
 
 
-    agu = Entity_load_from_file("models/dino.model");
+    agu = Player_load_from_file("models/dino.model");
+    agu2 = Entity_load_from_file("models/dino.model");
+    agu2->translation = gfc_vector3d(1, 1, 1);
     //agu = gf3d_model_load_from_file("models/dino.model");
     //gfc_matrix4_from_vectors(mat, gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(1, 1, 1));
-    gfc_matrix4_view(*view, gfc_vector3d(20, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 1));
+    gfc_matrix4_view(*view, gfc_vector3d(20, 20, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 1));
     // main game loop 
     
     // gf3d_vgraphics_get_view_matrix()
@@ -86,6 +89,7 @@ int main(int argc,char *argv[])
                 gf2d_mouse_draw();
                 //3d draws
                 /*gf3d_model_queue_render(agu, mat, GFC_COLOR_WHITE);*/
+                Entity_Think();
                 Entity_Update();
 
         gf3d_vgraphics_render_end();

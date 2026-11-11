@@ -5,7 +5,7 @@
 #include "model.h"
 
 
-typedef struct Entity Entity;
+//typedef struct Entity Entity;
 
 typedef struct Entity
 {
@@ -23,15 +23,17 @@ typedef struct Entity
     GFC_Matrix4     view;
    
 
-    int (*Think)(Entity* self);
-    int (*Update)(Entity* self);
+    int (*Think)(struct Entity* self);
+    int (*Update)(struct Entity* self);
 
     void*           data;
   /*  int (*Class)(Entity* self);*/
 
-};
+}Entity;
 
 void Entity_init_system(Uint32 modelCount);
+
+void Entity_Think();
 
 Entity* Entity_new();
 
