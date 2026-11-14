@@ -27,7 +27,7 @@ struct ObjData_S
     
     Vertex *faceVertices;
     Uint32  face_vert_count;
-    GFC_Box     bounds;
+    GFC_Box bounds;
 };
 
 /**

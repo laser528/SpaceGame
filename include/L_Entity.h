@@ -29,6 +29,7 @@ typedef struct Entity
     int (*Think)(struct Entity* self);
     int (*Update)(struct Entity* self);
     int (*Collision)(struct Entity* self, struct Entity* target);
+    
 
     void*           data;
   /*  int (*Class)(Entity* self);*/
@@ -40,6 +41,8 @@ void Entity_init_system(Uint32 modelCount);
 void Entity_Think();
 
 void general_update(Entity* self);
+
+int check_collision(Entity* self);
 
 Entity* Entity_new();
 

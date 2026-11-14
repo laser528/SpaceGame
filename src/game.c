@@ -67,18 +67,18 @@ int main(int argc,char *argv[])
     bg = gf2d_sprite_load_image("images/bg_flat.png");
     gf2d_mouse_load("actors/mouse.actor");
     
-    slog("PLanet");
-    planet = Structure_load_from_file("models/planet.json", 20, 2);
-    slog("PLanet End");
+
+    
+
 
     agu2 = Entity_load_from_file("models/dino.model");
     agu3 = Entity_load_from_file("models/dino.model");
     agu = Player_load_from_file("models/dino.model");
     
-    
-    
+   
+    /*planet = Structure_load_from_file("models/planet.json", 20, 2);*/
 
-    planet->translation = gfc_vector3d(1, 1, -20);
+    planet->translation = gfc_vector3d(1, 100, -24);
     agu3->translation = gfc_vector3d(1, 1, 3);
     agu2->translation = gfc_vector3d(1, 1, -3);
 

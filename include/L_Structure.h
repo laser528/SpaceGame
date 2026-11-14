@@ -1,7 +1,9 @@
 #pragma once
 
 #include "gfc_input.h"
+#include "gfc_primitives.h"
 #include "L_Entity.h"
+#include "gf3d_mesh.h"
 #include "L_gameTime.h"
 
 

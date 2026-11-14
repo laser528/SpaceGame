@@ -8,6 +8,23 @@ typedef struct {
 
 static EntityManager entity_manager = { 0 };
 
+
+int check_collision(Entity* self) {
+	int i;
+	Entity ent;
+	
+	for (i = 0; i < entity_manager.entityCount; i++) {
+		ent = entity_manager.entityList[i];
+		if (ent._refCount < 1) { continue; }
+		if (ent.Collision != NULL) {
+			slog("start COllision %i", i);
+			if (ent.Collision(&entity_manager.entityList[i], self)) return 1;
+		}
+
+	}
+	return 0;
+}
+
 // General entity update 
 void general_update(Entity* self) {
 	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
@@ -17,7 +34,7 @@ void general_update(Entity* self) {
 void Entity_Think() {
 	int i;
 	Entity ent;
-	
+	slog("agus Think");
 
 
 	for (i = 0; i < entity_manager.entityCount; i++) {
@@ -35,7 +52,7 @@ void Entity_Update() {
 	int i;
 	Entity ent;
 	
-	
+	slog("agus Update");
 
 	for (i = 0; i < entity_manager.entityCount; i++) {
 		ent = entity_manager.entityList[i];
@@ -64,7 +81,6 @@ Entity* Entity_load_from_file(const char* filename) {
 		return NULL;
 	}
 	ent->model = mod;
-	
 	ent->Update = general_update;
 	ent->_refCount += 1;
 	return ent;
@@ -115,6 +131,7 @@ Entity* Entity_new() {
 void Entity_free(Entity* self) {
 	if (!self)return;
 	self->_refCount--;
+	if (self->data) free(self->data);
 }
 
 void Entity_close() {

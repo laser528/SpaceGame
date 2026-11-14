@@ -1,7 +1,7 @@
 
 #include "L_gameTime.h"
 
-Uint32 lastFrameTime = 0;
+float lastFrameTime = 0;
 
 void updateLastFrameTime() {
 	lastFrameTime = SDL_GetTicks();

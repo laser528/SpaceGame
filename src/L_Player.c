@@ -2,7 +2,6 @@
 #include "L_Player.h"
 
 Entity* player = NULL;
-PlayerData pData = { 0 };
 
 void camera_Update(Entity* self) {
 	GFC_Matrix4* view = gf3d_vgraphics_get_view_matrix();
@@ -51,8 +50,10 @@ int player_update(Entity* self) {
 
 int player_think(Entity* self) {
 	PlayerData* selfData = self->data;
-	GFC_Vector3D movement;
+	GFC_Vector3D movement = { 0 };
 	
+	/*check_collision(self);*/
+	slog("test");
 	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
 
 
@@ -99,8 +100,14 @@ int player_think(Entity* self) {
 
 Entity* Player_load_from_file(const char* filename) {
 	Entity* player = Entity_load_from_file(filename);
-	pData.cameraRotation = gfc_vector3d(0, 0, 0);
-	pData.speed = 250;
+
+	player->data = gfc_allocate_array(sizeof(PlayerData), 1);
+	PlayerData* pData = player->data;
+
+	/*StructureData* sData = (structure->data);*/
+
+	pData->cameraRotation = gfc_vector3d(0, 0, 0);
+	pData->speed = 1;
 	player->radius = 25;
 	player->data = &pData;
 	player->Update = player_update;
