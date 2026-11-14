@@ -17,6 +17,7 @@
 #include "gf2d_mouse.h"
 #include "L_Entity.h"
 #include "L_Player.h"
+#include "L_gameTime.h"
 
 #include "gf3d_vgraphics.h"
 #include "gf3d_pipeline.h"
@@ -44,6 +45,7 @@ int main(int argc,char *argv[])
     Entity *agu, *agu2;
     GFC_Matrix4 mat = { 0 };
     GFC_Matrix4* view = gf3d_vgraphics_get_view_matrix();
+    Uint32 gameTime = SDL_GetTicks();
     //initializtion    
     parse_arguments(argc,argv);
     init_logger("gf3d.log",0);
@@ -73,15 +75,17 @@ int main(int argc,char *argv[])
     gfc_matrix4_view(*view, gfc_vector3d(20, 20, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 1));
     // main game loop 
     
-    // gf3d_vgraphics_get_view_matrix()
+    updateLastFrameTime();
     while(!_done)
     {
-       
+        // Frame time update
+        updateLastFrameTime();
+
         gfc_input_update();
         gf2d_mouse_update();
         gf2d_font_update();
         //camera updaes
-
+        
         gf3d_vgraphics_render_start();
                 //2D draws
                 /*gf2d_sprite_draw_image(bg,gfc_vector2d(0,0));*/
@@ -91,6 +95,8 @@ int main(int argc,char *argv[])
                 /*gf3d_model_queue_render(agu, mat, GFC_COLOR_WHITE);*/
                 Entity_Think();
                 Entity_Update();
+                
+                
 
         gf3d_vgraphics_render_end();
         if (gfc_input_command_down("exit"))_done = 1; // exit condition

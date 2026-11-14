@@ -181,7 +181,10 @@
     <ClInclude Include="..\include\gf3d_vgraphics.h" />
     <ClInclude Include="..\include\gf3d_vqueues.h" />
     <ClInclude Include="..\include\L_Entity.h" />
+    <ClInclude Include="..\include\L_gameTime.h" />
+    <ClInclude Include="..\include\L_Level.h" />
     <ClInclude Include="..\include\L_Player.h" />
+    <ClInclude Include="..\include\L_Structure.h" />
     <ClInclude Include="..\include\model.h" />
   </ItemGroup>
   <ItemGroup>
@@ -237,7 +240,10 @@
     <ClCompile Include="..\src\gf3d_vgraphics.c" />
     <ClCompile Include="..\src\gf3d_vqueues.c" />
     <ClCompile Include="..\src\L_Entity.c" />
+    <ClCompile Include="..\src\L_gameTime.c" />
+    <ClCompile Include="..\src\L_Level.c" />
     <ClCompile Include="..\src\L_Player.c" />
+    <ClCompile Include="..\src\L_Structure.c" />
     <ClCompile Include="..\src\model.c" />
   </ItemGroup>
   <ItemGroup>

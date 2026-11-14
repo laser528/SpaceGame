@@ -35,6 +35,8 @@ void Entity_init_system(Uint32 modelCount);
 
 void Entity_Think();
 
+void general_update(Entity* self);
+
 Entity* Entity_new();
 
 Entity* Entity_load_from_file(const char* filename);

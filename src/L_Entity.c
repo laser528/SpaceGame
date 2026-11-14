@@ -8,6 +8,12 @@ typedef struct {
 
 static EntityManager entity_manager = { 0 };
 
+// General entity update 
+void general_update(Entity* self) {
+	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
+	gf3d_model_queue_render(self->model, self->view, self->colorMod);
+}
+
 void Entity_Think() {
 	int count = gfc_list_get_count(entity_manager.entityList);
 	int i;
@@ -19,7 +25,7 @@ void Entity_Think() {
 		ent = entity_manager.entityList[i];
 		if (ent._refCount < 1) { continue; }
 		if (ent.Think != NULL) { 
-			ent.Think(&ent); 
+			ent.Think(&entity_manager.entityList[i]);
 		}
 		
 	}
@@ -35,11 +41,14 @@ void Entity_Update() {
 
 	for (i = 0; i < count; i++) {
 		ent = entity_manager.entityList[i];
+
 		if (ent._refCount < 1) { continue; }
-		
+		if (ent.Update != NULL) {
+			ent.Update(&entity_manager.entityList[i]);
+		}
 		/*gfc_matrix4_from_vectors(ent.view, gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(1, 1, 1));*/
-		gfc_matrix4_from_vectors_q(ent.view, ent.translation, ent.quaternion, ent.scale);
-		gf3d_model_queue_render(ent.model, ent.view, ent.colorMod);
+		//gfc_matrix4_from_vectors_q(ent.view, ent.translation, ent.quaternion, ent.scale);
+		//gf3d_model_queue_render(ent.model, ent.view, ent.colorMod);
 	}
 
 }
@@ -60,6 +69,7 @@ Entity* Entity_load_from_file(const char* filename) {
 	ent->scale = gfc_vector3d(1, 1, 1);
 	ent->quaternion = gfc_vector4d(0, 0, 0, 1);
 	ent->colorMod = GFC_COLOR_WHITE;
+	ent->Update = general_update;
 	ent->_refCount += 1;
 	return ent;
 }
