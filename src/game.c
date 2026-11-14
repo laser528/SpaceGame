@@ -71,8 +71,8 @@ int main(int argc,char *argv[])
     planet = Structure_load_from_file("models/planet.json", 20, 2);
     slog("PLanet End");
 
-    //agu2 = Entity_load_from_file("models/dino.model");
-    //agu3 = Entity_load_from_file("models/dino.model");
+    agu2 = Entity_load_from_file("models/dino.model");
+    agu3 = Entity_load_from_file("models/dino.model");
     agu = Player_load_from_file("models/dino.model");
     
     
