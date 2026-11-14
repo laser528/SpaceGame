@@ -43,12 +43,10 @@ void model_init_system(Uint32 modelCount) {
 
 Model* gf3d_model_new() {
 	int i;
-	slog("Attempt to make model %i", model_manager.modelCount);
 	for (i = 0; i < model_manager.modelCount; i++) {
-		slog("Model ref count %i", model_manager.modelList[i]._refCount);
 		if (model_manager.modelList[i]._refCount <= 0) {
+			slog("Model index %i", i);
 			model_manager.modelList[i]._refCount += 1;
-			
 			model_manager.modelCount += 1;
 			return &model_manager.modelList[i];	
 		}
@@ -73,15 +71,20 @@ Model* gf3d_model_load_from_file(const char* filename) {
 
 
 	Model* mod = gf3d_model_new();
+	
 	if (!mod) {
 		slog("Failed to alloacate Model");
 		return;
 	}
-
+	
 	mod->mesh = gf3d_mesh_load_obj(sj_object_get_string(mode, "obj"));
+	
 	mod->Texture = gf3d_texture_load(sj_object_get_string(mode, "texture"));
-
+	
+	
+	
 	if (json) { sj_object_free(json); }
+	
 
 	if (!mod->mesh) { 
 		slog("No mesh");
@@ -91,7 +94,7 @@ Model* gf3d_model_load_from_file(const char* filename) {
 		slog("No Texture");
 		return NULL; 
 	}
-	slog("Model Loaded");
+	
 	return mod;
 
 }

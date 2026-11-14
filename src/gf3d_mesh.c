@@ -90,6 +90,7 @@ Mesh* gf3d_mesh_new() {
                 slog("cannot allocated more mem for new mesh");
                 return NULL;
             }
+            slog("Mesh index %i", i);
             mesh_manager.meshCount += 1;
             return &mesh_manager.meshList[i];
         }
@@ -108,25 +109,27 @@ Mesh* gf3d_mesh_load_obj(const char* filename) {
     Mesh* mesh;
     MeshPrimitive* prim;
   /*  ObjData* obj;*/
-
+ 
     if (!filename) { 
         slog("Mesh load obj failed no file name");
         return NULL; 
     }
-
+    slog("Attempt mesh");
     mesh = gf3d_mesh_get_by_filename(filename);
+
     if (mesh) { 
-        slog("Found mesh by filename %s", filename);
         mesh->_refCount++;
         return mesh; 
     }
    
     mesh = gf3d_mesh_new();
+
     if (!mesh) {
         slog("Cant allocate Mesh");
         return NULL;
     }
     strcpy(mesh->filename, filename);
+
     prim = gf3d_mesh_primitive_new();
     if (!prim) {
         gf3d_mesh_free(mesh);
@@ -141,6 +144,7 @@ Mesh* gf3d_mesh_load_obj(const char* filename) {
         gf3d_mesh_primitive_free(prim);
         return NULL;
     }
+
     
     if (!gf3d_mesh_primitive_buffer_create(prim)) {
         gf3d_mesh_free(mesh);
@@ -148,8 +152,7 @@ Mesh* gf3d_mesh_load_obj(const char* filename) {
         slog("failed to allocate prim buffer");
         return NULL;
     }
-
-    slog("Mesh created");
+    
     return mesh;
     
 }
@@ -233,11 +236,12 @@ void gf3d_mesh_queue_render(Mesh* mesh, Pipeline* pipe, void* uboData, Texture* 
 Mesh* gf3d_mesh_get_by_filename(const char* filename) {
     if (!filename)return NULL;
     int i,c;
-    c = gfc_list_count(mesh_manager.meshList);
-
-    for (i = 0; i < c; i++) {
+    /*c = gfc_list_count(mesh_manager.meshList);*/
+    
+    for (i = 0; i < mesh_manager.meshCount; i++) {
         if (strlen(mesh_manager.meshList[i].filename) == 0)continue;
         if (gfc_strlcmp(mesh_manager.meshList[i].filename, filename) == 0) {
+            slog("mesh %i, %s : %s", i, filename, mesh_manager.meshList[i].filename);
             return &mesh_manager.meshList[i];
         }
     }

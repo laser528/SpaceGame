@@ -99,10 +99,11 @@ int player_think(Entity* self) {
 
 Entity* Player_load_from_file(const char* filename) {
 	Entity* player = Entity_load_from_file(filename);
-	pData.radius = 5;
 	pData.cameraRotation = gfc_vector3d(0, 0, 0);
 	pData.speed = 250;
+	player->radius = 25;
 	player->data = &pData;
 	player->Update = player_update;
 	player->Think = player_think;
+	player->Collision = NULL;
 }

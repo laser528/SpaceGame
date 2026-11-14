@@ -17,6 +17,7 @@
 #include "gf2d_mouse.h"
 #include "L_Entity.h"
 #include "L_Player.h"
+#include "L_Structure.h"
 #include "L_gameTime.h"
 
 #include "gf3d_vgraphics.h"
@@ -42,7 +43,7 @@ int main(int argc,char *argv[])
 {
     //local variables
     Sprite *bg;
-    Entity *agu, *agu2;
+    Entity *agu, *agu2, *agu3, *planet;
     GFC_Matrix4 mat = { 0 };
     GFC_Matrix4* view = gf3d_vgraphics_get_view_matrix();
     Uint32 gameTime = SDL_GetTicks();
@@ -65,11 +66,22 @@ int main(int argc,char *argv[])
     slog_sync();
     bg = gf2d_sprite_load_image("images/bg_flat.png");
     gf2d_mouse_load("actors/mouse.actor");
+    
+    slog("PLanet");
+    planet = Structure_load_from_file("models/planet.json", 20, 2);
+    slog("PLanet End");
 
-
+    //agu2 = Entity_load_from_file("models/dino.model");
+    //agu3 = Entity_load_from_file("models/dino.model");
     agu = Player_load_from_file("models/dino.model");
-    agu2 = Entity_load_from_file("models/dino.model");
-    agu2->translation = gfc_vector3d(1, 1, 1);
+    
+    
+    
+
+    planet->translation = gfc_vector3d(1, 1, -20);
+    agu3->translation = gfc_vector3d(1, 1, 3);
+    agu2->translation = gfc_vector3d(1, 1, -3);
+
     //agu = gf3d_model_load_from_file("models/dino.model");
     //gfc_matrix4_from_vectors(mat, gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(1, 1, 1));
     gfc_matrix4_view(*view, gfc_vector3d(20, 20, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 1));

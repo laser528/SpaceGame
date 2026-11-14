@@ -15,13 +15,12 @@ void general_update(Entity* self) {
 }
 
 void Entity_Think() {
-	int count = gfc_list_get_count(entity_manager.entityList);
 	int i;
 	Entity ent;
 	
 
 
-	for (i = 0; i < count; i++) {
+	for (i = 0; i < entity_manager.entityCount; i++) {
 		ent = entity_manager.entityList[i];
 		if (ent._refCount < 1) { continue; }
 		if (ent.Think != NULL) { 
@@ -33,17 +32,16 @@ void Entity_Think() {
 }
 
 void Entity_Update() {
-	int count = gfc_list_get_count(entity_manager.entityList);
 	int i;
 	Entity ent;
 	
 	
 
-	for (i = 0; i < count; i++) {
+	for (i = 0; i < entity_manager.entityCount; i++) {
 		ent = entity_manager.entityList[i];
-
 		if (ent._refCount < 1) { continue; }
 		if (ent.Update != NULL) {
+			
 			ent.Update(&entity_manager.entityList[i]);
 		}
 		/*gfc_matrix4_from_vectors(ent.view, gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(1, 1, 1));*/
@@ -66,9 +64,7 @@ Entity* Entity_load_from_file(const char* filename) {
 		return NULL;
 	}
 	ent->model = mod;
-	ent->scale = gfc_vector3d(1, 1, 1);
-	ent->quaternion = gfc_vector4d(0, 0, 0, 1);
-	ent->colorMod = GFC_COLOR_WHITE;
+	
 	ent->Update = general_update;
 	ent->_refCount += 1;
 	return ent;
@@ -85,10 +81,16 @@ void Entity_init_system(Uint32 entityCount) {
 	}
 	entity_manager.entityCount = entityCount;
 	entity_manager.entityList = gfc_allocate_array(sizeof(Entity), entityCount);
+
 	for (int i = 0; i < entityCount; i++) { 
 		entity_manager.entityList[i].id = i; 
 		entity_manager.entityList[i].scale = gfc_vector3d(1,1,1);
+		entity_manager.entityList[i].quaternion = gfc_vector4d(0, 0, 0, 1);
 		entity_manager.entityList[i].colorMod = GFC_COLOR_WHITE;
+		entity_manager.entityList[i].Update = NULL;
+		entity_manager.entityList[i].Think = NULL;
+		entity_manager.entityList[i].Collision = NULL;
+		entity_manager.entityList[i]._refCount = 0;
 	}
 	model_init_system(entityCount);
 	atexit(gf3d_model_close);
@@ -96,13 +98,13 @@ void Entity_init_system(Uint32 entityCount) {
 
 Entity* Entity_new() {
 	int i;
-	slog("Attempt to make model %i", entity_manager.entityCount);
+	slog("Attempt to make Entity");
 	for (i = 0; i < entity_manager.entityCount; i++) {
-		slog("Model ref count %i", entity_manager.entityList[i]._refCount);
 		if (entity_manager.entityList[i]._refCount <= 0) {
+			slog("Entity index %i", i);
 			entity_manager.entityList[i]._refCount += 1;
 
-			entity_manager.entityCount += 1;
+			
 			return &entity_manager.entityList[i];
 		}
 	}
