@@ -74,22 +74,30 @@ int main(int argc,char *argv[])
     agu2 = Entity_load_from_file("models/dino.model");
     agu3 = Entity_load_from_file("models/dino.model");
     agu = Player_load_from_file("models/dino.model");
-    
+    slog("Agus loaded");
+    PlayerData* y = agu->data;
+    if (!y) {
+        slog("x does not exist");
+    }
+    slog("leed %i---------------------------------", 1);
    
     /*planet = Structure_load_from_file("models/planet.json", 20, 2);*/
 
     planet->translation = gfc_vector3d(1, 100, -24);
     agu3->translation = gfc_vector3d(1, 1, 3);
     agu2->translation = gfc_vector3d(1, 1, -3);
-
+    slog("Agus translated");
     //agu = gf3d_model_load_from_file("models/dino.model");
     //gfc_matrix4_from_vectors(mat, gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(1, 1, 1));
     gfc_matrix4_view(*view, gfc_vector3d(20, 20, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 1));
+    slog("View");
     // main game loop 
     
     updateLastFrameTime();
+    slog("Last Frame time");
     while(!_done)
     {
+        slog_sync();
         // Frame time update
         updateLastFrameTime();
 

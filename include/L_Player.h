@@ -1,5 +1,6 @@
 #pragma once
 #include "gfc_input.h"
+#include "gf3d_vgraphics.h"
 #include "L_Entity.h"
 #include "L_gameTime.h"
 

@@ -34,7 +34,6 @@ void general_update(Entity* self) {
 void Entity_Think() {
 	int i;
 	Entity ent;
-	slog("agus Think");
 
 
 	for (i = 0; i < entity_manager.entityCount; i++) {
@@ -52,7 +51,6 @@ void Entity_Update() {
 	int i;
 	Entity ent;
 	
-	slog("agus Update");
 
 	for (i = 0; i < entity_manager.entityCount; i++) {
 		ent = entity_manager.entityList[i];

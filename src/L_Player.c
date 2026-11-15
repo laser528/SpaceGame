@@ -1,7 +1,8 @@
-#include "gf3d_vgraphics.h"
+
 #include "L_Player.h"
 
 Entity* player = NULL;
+PlayerData pData = { 0 };
 
 void camera_Update(Entity* self) {
 	GFC_Matrix4* view = gf3d_vgraphics_get_view_matrix();
@@ -50,13 +51,12 @@ int player_update(Entity* self) {
 
 int player_think(Entity* self) {
 	PlayerData* selfData = self->data;
-	GFC_Vector3D movement = { 0 };
+	GFC_Vector3D movement;
 	
 	/*check_collision(self);*/
-	slog("test");
 	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
 
-
+	slog("Speed %i", selfData->speed);
 	// Player input
 	if (gfc_input_key_down("RIGHT")) {
 		selfData->cameraRotation.x += 1;
@@ -74,9 +74,13 @@ int player_think(Entity* self) {
 		gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
 		GFC_Vector3D forward = { -self->view[1][0], -self->view[1][1], -self->view[1][2] };
 		gfc_vector3d_normalize(&forward);
-
-		gfc_vector3d_scale(movement, forward, selfData->speed * getDeltaTime() );
+		
+		float test = getDeltaTime();
+		slog("movement %i, %f, %f", selfData->speed, test, selfData->speed * test);
+		
+		gfc_vector3d_scale(movement, forward, selfData->speed * test);
 		gfc_vector3d_add(self->translation, self->translation, movement);
+
 	}
 	if (gfc_input_key_down("DOWN")) {
 
@@ -103,11 +107,19 @@ Entity* Player_load_from_file(const char* filename) {
 
 	player->data = gfc_allocate_array(sizeof(PlayerData), 1);
 	PlayerData* pData = player->data;
+	if (!pData) {
+		slog("Killer");
+		return NULL;
+	}
+	/*player->data = &pData;*/
+
+	
 
 	/*StructureData* sData = (structure->data);*/
 
 	pData->cameraRotation = gfc_vector3d(0, 0, 0);
 	pData->speed = 1;
+	slog("SPEED %i---------------------------------", pData->speed);
 	player->radius = 25;
 	player->data = &pData;
 	player->Update = player_update;
