@@ -2,7 +2,6 @@
 #include "L_Player.h"
 
 Entity* player = NULL;
-PlayerData pData = { 0 };
 
 void camera_Update(Entity* self) {
 	GFC_Matrix4* view = gf3d_vgraphics_get_view_matrix();
@@ -56,7 +55,7 @@ int player_think(Entity* self) {
 	/*check_collision(self);*/
 	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
 
-	slog("Speed %i", selfData->speed);
+
 	// Player input
 	if (gfc_input_key_down("RIGHT")) {
 		selfData->cameraRotation.x += 1;
@@ -76,7 +75,6 @@ int player_think(Entity* self) {
 		gfc_vector3d_normalize(&forward);
 		
 		float test = getDeltaTime();
-		slog("movement %i, %f, %f", selfData->speed, test, selfData->speed * test);
 		
 		gfc_vector3d_scale(movement, forward, selfData->speed * test);
 		gfc_vector3d_add(self->translation, self->translation, movement);
@@ -111,17 +109,12 @@ Entity* Player_load_from_file(const char* filename) {
 		slog("Killer");
 		return NULL;
 	}
-	/*player->data = &pData;*/
-
-	
-
-	/*StructureData* sData = (structure->data);*/
 
 	pData->cameraRotation = gfc_vector3d(0, 0, 0);
-	pData->speed = 1;
+	pData->speed = 250;
 	slog("SPEED %i---------------------------------", pData->speed);
 	player->radius = 25;
-	player->data = &pData;
+
 	player->Update = player_update;
 	player->Think = player_think;
 	player->Collision = NULL;
