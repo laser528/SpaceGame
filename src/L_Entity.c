@@ -17,8 +17,7 @@ int check_collision(Entity* self) {
 		ent = entity_manager.entityList[i];
 		if (ent._refCount < 1) { continue; }
 		if (ent.Collision != NULL) {
-			slog("start COllision %i", i);
-			if (ent.Collision(&entity_manager.entityList[i], self)) return 1;
+			if (ent.Collision(&ent, self)) return 1;
 		}
 
 	}

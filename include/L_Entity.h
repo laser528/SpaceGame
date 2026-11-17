@@ -17,7 +17,7 @@ typedef struct Entity
     GFC_Color       colorMod;
 
     // Collision
-    int             radius; // to create bounding box in gfc primatives
+    float             radius; // to create bounding box in gfc primatives
 
     //3d Space      gfc_matrix4_from_vectors_q
     GFC_Vector3D    translation; // Position

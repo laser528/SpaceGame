@@ -10,9 +10,15 @@ int checkPointCollision(Entity* self, Entity* target) {
         prim = gfc_list_nth(self->model->mesh->primitives, i);
         if (!prim)continue;
 		for (int j = 0; j < prim->objData->face_count; j++) {
-			for (int k = 0; k < 3; i++) {
-				GFC_Vector3D point = prim->objData->faceVertices[prim->objData->outFace->verts[k]].vertex;
-				if (gfc_point_in_sphere(point, targetSphere)) {return 1;}
+
+			GFC_Triangle3D tri = gfc_triangle(
+				gfc_vector3d_added(gfc_vector3d_scaled_by_3D(prim->objData->faceVertices[prim->objData->outFace->verts[0]].vertex, self->scale), self->translation),
+				gfc_vector3d_added(gfc_vector3d_scaled_by_3D(prim->objData->faceVertices[prim->objData->outFace->verts[1]].vertex, self->scale), self->translation),
+				gfc_vector3d_added(gfc_vector3d_scaled_by_3D(prim->objData->faceVertices[prim->objData->outFace->verts[2]].vertex, self->scale), self->translation)
+			);
+			
+			if (GFC_triangle_in_sphere(tri, targetSphere)) {
+				return 1;
 			}
 		}
     }
@@ -20,7 +26,7 @@ int checkPointCollision(Entity* self, Entity* target) {
 	/*for (int i=0; )*/
 }
 
-Entity* Structure_load_from_file(const char* filename, int scale, int gravityScale) {
+Entity* Structure_load_from_file(const char* filename, float scale, float gravityScale) {
 	Entity* structure = Entity_load_from_file(filename);
 
 	structure->data = gfc_allocate_array(sizeof(StructureData), 1);

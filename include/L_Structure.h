@@ -12,14 +12,14 @@ typedef struct
 {
 	int             health;
 	int             speed;
-	int             gravityRadius; // to create bounding box in gfc primatives
+	float           gravityRadius; // to create bounding box in gfc primatives
 	
 
 }StructureData;
 
 
 
-Entity* Structure_load_from_file(const char* filename, int scale, int gravityScale);
+Entity* Structure_load_from_file(const char* filename, float scale, float gravityScale);
 
 
 

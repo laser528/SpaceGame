@@ -52,7 +52,10 @@ int player_think(Entity* self) {
 	PlayerData* selfData = self->data;
 	GFC_Vector3D movement;
 	
-	/*check_collision(self);*/
+	if (check_collision(self)) {
+	
+	}
+
 	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
 
 
@@ -74,10 +77,13 @@ int player_think(Entity* self) {
 		GFC_Vector3D forward = { -self->view[1][0], -self->view[1][1], -self->view[1][2] };
 		gfc_vector3d_normalize(&forward);
 		
-		float test = getDeltaTime();
 		
-		gfc_vector3d_scale(movement, forward, selfData->speed * test);
+		gfc_vector3d_scale(movement, forward, selfData->speed);
 		gfc_vector3d_add(self->translation, self->translation, movement);
+
+
+
+		return 1;
 
 	}
 	if (gfc_input_key_down("DOWN")) {
@@ -91,8 +97,10 @@ int player_think(Entity* self) {
 		gfc_vector3d_normalize(&forward);
 
 		
-		gfc_vector3d_scale(movement, forward, selfData->speed * getDeltaTime() );
+		gfc_vector3d_scale(movement, forward, selfData->speed);
 		gfc_vector3d_add(self->translation, self->translation, movement);
+
+		return 1;
 	}
 	
 	return 1;
@@ -111,9 +119,8 @@ Entity* Player_load_from_file(const char* filename) {
 	}
 
 	pData->cameraRotation = gfc_vector3d(0, 0, 0);
-	pData->speed = 250;
-	slog("SPEED %i---------------------------------", pData->speed);
-	player->radius = 25;
+	pData->speed = 1;
+	player->radius = 80;
 
 	player->Update = player_update;
 	player->Think = player_think;
