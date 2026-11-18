@@ -26,6 +26,8 @@ typedef struct Entity
     GFC_Matrix4     view;
 
     GFC_Vector3D*    gravityPoint;
+    struct Entity*   gravityEntity;
+    GFC_Vector3D     lastCollisionPoint;
    
 
     int (*Think)(struct Entity* self);
@@ -37,6 +39,7 @@ typedef struct Entity
   /*  int (*Class)(Entity* self);*/
 
 }Entity;
+
 
 void Entity_init_system(Uint32 modelCount);
 

@@ -102,6 +102,7 @@ void Entity_init_system(Uint32 entityCount) {
 		entity_manager.entityList[i].colorMod = GFC_COLOR_WHITE;
 		entity_manager.entityList[i].Update = NULL;
 		entity_manager.entityList[i].Think = NULL;
+		entity_manager.entityList[i].gravityPoint = NULL;
 		entity_manager.entityList[i].Collision = NULL;
 		entity_manager.entityList[i]._refCount = 0;
 	}

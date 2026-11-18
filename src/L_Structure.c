@@ -26,6 +26,8 @@ int checkEdgeToMesh(Entity* self, Entity* target) {
 		gfc_vector3d_added(gfc_vector3d_scaled(direction, target->radius), target->translation)
 	);
 
+	
+
 	int c = gfc_list_get_count(self->model->mesh->primitives);
 
 	for (int i = 0; i < c; i++) {
@@ -41,6 +43,7 @@ int checkEdgeToMesh(Entity* self, Entity* target) {
 			);
 
 			if (gfc_triangle_edge_test(edge, tri, &collisionPoint)) {
+				target->lastCollisionPoint = collisionPoint;
 				return 1;
 			}
 				

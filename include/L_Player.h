@@ -9,10 +9,11 @@
 typedef struct
 {
 	int             health;
-	float             speed;
+	float           speed;
 	
 
 	GFC_Vector3D    cameraRotation;
+	
 }PlayerData;
 
 

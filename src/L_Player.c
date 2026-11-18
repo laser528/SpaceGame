@@ -37,7 +37,7 @@ void camera_Update(Entity* self) {
 		*view,
 		cameraPosition,
 		self->translation,
-		gfc_vector3d(0, 0, 1)
+		up
 	);
 }
 
@@ -47,29 +47,44 @@ int player_update(Entity* self) {
 
 }
 
-int Player_Gravity(Entity* self) {
+GFC_Vector3D Player_Gravity(Entity* self) {
 	GFC_Vector3D originalTranslation = self->translation;
 	GFC_Vector3D originalScale = self->scale;
 	GFC_Vector4D originalQuterion = self->quaternion;
 	PlayerData* selfData = self->data;
 	GFC_Vector3D movement;
 
+	if (self->gravityPoint == NULL) return gfc_vector3d(0, 0, 1);
+	
 	GFC_Vector3D gravity = gfc_vector3d_subbed(*self->gravityPoint, self->translation);
-	GFC_Vector3D up = gfc_vector3d_subbed(*self->gravityPoint, self->translation);
-
+	GFC_Vector3D up = gfc_vector3d_subbed(self->translation, *self->gravityPoint);
+	
 	gfc_vector3d_normalize(&gravity);
 	gfc_vector3d_normalize(&up);
 
-	gfc_vector4d_rotate_by_degrees(&self->quaternion, up, selfData->cameraRotation.x);
+	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
+
+	GFC_Vector3D currentUp = {
+		self->view[2][0],
+		self->view[2][1],
+		self->view[2][2]
+	};
+
+	gfc_quaternion_align_up(&self->quaternion, currentUp, up);
 
 	gfc_vector3d_scale(movement, gravity, 1);
-	gfc_vector3d_add(self->translation, self->translation, gravity);
+	gfc_vector3d_add(self->translation, self->translation, movement);
 
 	if (check_collision(self)) {
-		self->translation = originalTranslation;
-		return 0;
+
+		movement = gfc_vector3d(0,0,0);
+		gfc_vector3d_scale(movement, up, self->radius+0.15f);
+		gfc_vector3d_add(movement, self->lastCollisionPoint, movement);
+		self->translation = movement;
+
 	}
-	return 1;
+
+	return up;
 }
 
 int player_think(Entity* self) {
@@ -80,10 +95,13 @@ int player_think(Entity* self) {
 	GFC_Vector3D originalScale = self->scale;
 	GFC_Vector4D originalQuterion = self->quaternion;
 
+	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
+
+	GFC_Vector3D planetUp = Player_Gravity(self);
 
 	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
 
-
+	
 	// Player input
 	if (gfc_input_key_down("RIGHT")) {
 		selfData->cameraRotation.x += 1;
@@ -93,10 +111,9 @@ int player_think(Entity* self) {
 	}
 	if (gfc_input_key_down("UP")) {
 		GFC_Vector3D up = { self->view[2][0], self->view[2][1], self->view[2][2] };
+		gfc_vector4d_rotate_world_by_degrees(&self->quaternion, planetUp, selfData->cameraRotation.x);
 
-		gfc_vector4d_rotate_by_degrees(&self->quaternion, up, selfData->cameraRotation.x);
-
-		selfData->cameraRotation.x = 0;
+		selfData->cameraRotation.x *= 0.60;
 
 		gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
 		GFC_Vector3D forward = { -self->view[1][0], -self->view[1][1], -self->view[1][2] };
@@ -105,8 +122,7 @@ int player_think(Entity* self) {
 		
 		gfc_vector3d_scale(movement, forward, selfData->speed);
 		gfc_vector3d_add(self->translation, self->translation, movement);
-
-
+		
 		if (check_collision(self)) {
 			self->translation = originalTranslation;
 			return 0;
@@ -120,8 +136,8 @@ int player_think(Entity* self) {
 	if (gfc_input_key_down("DOWN")) {
 
 		GFC_Vector3D up = { self->view[2][0], self->view[2][1], self->view[2][2] };
-		gfc_vector4d_rotate_by_degrees(&self->quaternion, up, selfData->cameraRotation.x);
-		selfData->cameraRotation.x = 0;
+		gfc_vector4d_rotate_world_by_degrees(&self->quaternion, planetUp, selfData->cameraRotation.x);
+		selfData->cameraRotation.x *= 0.60;
 
 		gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
 		GFC_Vector3D forward = { self->view[1][0], self->view[1][1], self->view[1][2] };
@@ -156,9 +172,10 @@ Entity* Player_load_from_file(const char* filename) {
 
 	pData->cameraRotation = gfc_vector3d(0, 0, 0);
 	pData->speed = 1;
-	player->radius = 5.0f;
+	player->radius = 7.0f;
 
 	player->Update = player_update;
 	player->Think = player_think;
 	player->Collision = NULL;
+	return player;
 }
