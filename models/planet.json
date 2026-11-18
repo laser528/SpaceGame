@@ -1,6 +1,7 @@
 {
-    "model": {
-        "obj": "models/primitives/isphere.obj",
-        "texture": "models/primitives/flatwhite.png"
-    }
+  "model": {
+    "obj": "models/primitives/unitsphere.obj",
+    "texture": "images/testworld.png"
+  }
 }
+//"texture": "models/primitives/flatwhite.png"

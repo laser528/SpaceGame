@@ -77,12 +77,13 @@ int main(int argc,char *argv[])
 
 
    
-    planet = Structure_load_from_file("models/planet.json", 80, 2);
+    planet = Structure_load_from_file("models/planet.json", 160, 2);
 
     planet->translation = gfc_vector3d(1, -250, -24);
     agu3->translation = gfc_vector3d(1, 1, 3);
     agu2->translation = gfc_vector3d(1, 1, -3);
    
+    agu->gravityPoint = &planet->translation;
     //agu = gf3d_model_load_from_file("models/dino.model");
     //gfc_matrix4_from_vectors(mat, gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(1, 1, 1));
     gfc_matrix4_view(*view, gfc_vector3d(20, 20, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 1));

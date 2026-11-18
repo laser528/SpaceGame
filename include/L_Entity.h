@@ -24,6 +24,8 @@ typedef struct Entity
     GFC_Vector4D    quaternion;  // Rotation
     GFC_Vector3D    scale;
     GFC_Matrix4     view;
+
+    GFC_Vector3D*    gravityPoint;
    
 
     int (*Think)(struct Entity* self);

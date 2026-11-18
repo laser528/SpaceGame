@@ -11,7 +11,6 @@ void camera_Update(Entity* self) {
 	GFC_Vector3D cameraPosition;
 	PlayerData* selfData = self->data;
 
-
 	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
 
 
@@ -48,13 +47,39 @@ int player_update(Entity* self) {
 
 }
 
+int Player_Gravity(Entity* self) {
+	GFC_Vector3D originalTranslation = self->translation;
+	GFC_Vector3D originalScale = self->scale;
+	GFC_Vector4D originalQuterion = self->quaternion;
+	PlayerData* selfData = self->data;
+	GFC_Vector3D movement;
+
+	GFC_Vector3D gravity = gfc_vector3d_subbed(*self->gravityPoint, self->translation);
+	GFC_Vector3D up = gfc_vector3d_subbed(*self->gravityPoint, self->translation);
+
+	gfc_vector3d_normalize(&gravity);
+	gfc_vector3d_normalize(&up);
+
+	gfc_vector4d_rotate_by_degrees(&self->quaternion, up, selfData->cameraRotation.x);
+
+	gfc_vector3d_scale(movement, gravity, 1);
+	gfc_vector3d_add(self->translation, self->translation, gravity);
+
+	if (check_collision(self)) {
+		self->translation = originalTranslation;
+		return 0;
+	}
+	return 1;
+}
+
 int player_think(Entity* self) {
 	PlayerData* selfData = self->data;
 	GFC_Vector3D movement;
 	
-	if (check_collision(self)) {
-	
-	}
+	GFC_Vector3D originalTranslation = self->translation;
+	GFC_Vector3D originalScale = self->scale;
+	GFC_Vector4D originalQuterion = self->quaternion;
+
 
 	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
 
@@ -82,6 +107,12 @@ int player_think(Entity* self) {
 		gfc_vector3d_add(self->translation, self->translation, movement);
 
 
+		if (check_collision(self)) {
+			self->translation = originalTranslation;
+			return 0;
+		}
+			
+
 
 		return 1;
 
@@ -99,6 +130,11 @@ int player_think(Entity* self) {
 		
 		gfc_vector3d_scale(movement, forward, selfData->speed);
 		gfc_vector3d_add(self->translation, self->translation, movement);
+
+		if (check_collision(self)) {
+			self->translation = originalTranslation;
+			return 0;
+		}
 
 		return 1;
 	}
@@ -120,7 +156,7 @@ Entity* Player_load_from_file(const char* filename) {
 
 	pData->cameraRotation = gfc_vector3d(0, 0, 0);
 	pData->speed = 1;
-	player->radius = 80;
+	player->radius = 5.0f;
 
 	player->Update = player_update;
 	player->Think = player_think;
