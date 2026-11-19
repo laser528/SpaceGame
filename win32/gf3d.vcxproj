@@ -185,6 +185,7 @@
     <ClInclude Include="..\include\L_Level.h" />
     <ClInclude Include="..\include\L_Player.h" />
     <ClInclude Include="..\include\L_Structure.h" />
+    <ClInclude Include="..\include\L_Structure_interactions.h" />
     <ClInclude Include="..\include\model.h" />
   </ItemGroup>
   <ItemGroup>
@@ -216,6 +217,7 @@
     <ClCompile Include="..\gfc\src\gfc_types.c" />
     <ClCompile Include="..\gfc\src\gfc_vector.c" />
     <ClCompile Include="..\gfc\src\miniz.c" />
+    <ClCompile Include="..\include\L_Enemy.h" />
     <ClCompile Include="..\src\game.c" />
     <ClCompile Include="..\src\gf2d_actor.c" />
     <ClCompile Include="..\src\gf2d_camera.c" />
@@ -239,11 +241,14 @@
     <ClCompile Include="..\src\gf3d_validation.c" />
     <ClCompile Include="..\src\gf3d_vgraphics.c" />
     <ClCompile Include="..\src\gf3d_vqueues.c" />
+    <ClCompile Include="..\src\L_Enemy.c" />
+    <ClCompile Include="..\src\L_Enemy_Pinwheel.c" />
     <ClCompile Include="..\src\L_Entity.c" />
     <ClCompile Include="..\src\L_gameTime.c" />
     <ClCompile Include="..\src\L_Level.c" />
     <ClCompile Include="..\src\L_Player.c" />
     <ClCompile Include="..\src\L_Structure.c" />
+    <ClCompile Include="..\src\L_Structure_interactions.c" />
     <ClCompile Include="..\src\model.c" />
   </ItemGroup>
   <ItemGroup>

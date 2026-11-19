@@ -9,6 +9,53 @@ typedef struct {
 static EntityManager entity_manager = { 0 };
 
 
+void Entity_look_at(Entity* self, Entity* target)
+{
+	if (!self || !target) return;
+
+	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
+
+	GFC_Vector3D forward = {-self->view[1][0], -self->view[1][1], -self->view[1][2] };
+	GFC_Vector3D up = {self->view[2][0], self->view[2][1], self->view[2][2]};
+	gfc_vector3d_normalize(&forward);
+	gfc_vector3d_normalize(&up);
+
+	GFC_Vector3D direction = gfc_vector3d_subbed(target->translation, self->translation);
+	float dot = gfc_vector3d_dot_product(direction, up);
+
+	direction = gfc_vector3d_subbed(direction, gfc_vector3d_scaled(up, dot));
+
+	if (gfc_vector3d_magnitude(direction) < 0.000001f) return;
+	gfc_vector3d_normalize(&direction);
+
+	GFC_Vector3D cross;
+	gfc_vector3d_cross_product(&cross, forward, direction);
+
+	float angle = atan2f(gfc_vector3d_dot_product(cross, up), gfc_vector3d_dot_product(forward, direction)) / GFC_DEGTORAD;
+
+	gfc_vector4d_rotate_world_by_degrees(&self->quaternion, up, angle);
+	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
+}
+
+int check_attack(Entity* self, float range, int team) {
+	int i;
+	Entity ent;
+
+	for (i = 0; i < entity_manager.entityCount; i++) {
+		ent = entity_manager.entityList[i];
+		if (ent._refCount < 1) { continue; }
+		if (ent.Attacked != NULL) {
+			if (gfc_vector3d_magnitude_between(self->translation, ent.translation) < range) {
+				if (ent.team != team) continue;
+				if (ent.Attacked(&entity_manager.entityList[i], self)) return 1;
+			}
+			
+		}
+
+	}
+	return 0;
+}
+
 int check_collision(Entity* self) {
 	int i;
 	Entity ent;
@@ -17,7 +64,7 @@ int check_collision(Entity* self) {
 		ent = entity_manager.entityList[i];
 		if (ent._refCount < 1) { continue; }
 		if (ent.Collision != NULL) {
-			if (ent.Collision(&ent, self)) return 1;
+			if (ent.Collision(&entity_manager.entityList[i], self)) return 1;
 		}
 
 	}
@@ -55,7 +102,6 @@ void Entity_Update() {
 		ent = entity_manager.entityList[i];
 		if (ent._refCount < 1) { continue; }
 		if (ent.Update != NULL) {
-			
 			ent.Update(&entity_manager.entityList[i]);
 		}
 		/*gfc_matrix4_from_vectors(ent.view, gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(1, 1, 1));*/
@@ -79,7 +125,6 @@ Entity* Entity_load_from_file(const char* filename) {
 	}
 	ent->model = mod;
 	ent->Update = general_update;
-	ent->_refCount += 1;
 	return ent;
 }
 
@@ -128,8 +173,17 @@ Entity* Entity_new() {
 
 void Entity_free(Entity* self) {
 	if (!self)return;
-	self->_refCount--;
-	if (self->data) free(self->data);
+	
+	
+	if (self->_refCount) {
+		self->_refCount = 0;
+		if (self->free) self->free(self);
+		memset(self, NULL, sizeof(Entity));
+	}
+
+	
+	
+	
 }
 
 void Entity_close() {

@@ -1,7 +1,11 @@
 
 #include "L_Player.h"
 
-Entity* player = NULL;
+Entity* Player = NULL;
+
+Entity* getPlayer() {
+	return Player;
+}
 
 void camera_Update(Entity* self) {
 	GFC_Matrix4* view = gf3d_vgraphics_get_view_matrix();
@@ -128,6 +132,10 @@ void player_Actions(Entity* self) {
 	if (time - selfData->JumpStartTime < 500) {
 		jumpProgress = (1 - (time - selfData->JumpStartTime) * 0.002);
 		
+		if (selfData->jumping > 1) {
+			check_attack(self, 14.0f, ENEMY_TEAM);
+		}
+
 		gfc_vector3d_scale(movement, up, 1 + 2 * jumpProgress);
 		gfc_vector3d_add(self->translation, self->translation, movement);
 		if (check_collision(self)) {
@@ -152,7 +160,7 @@ void player_Actions(Entity* self) {
 		gfc_vector3d_add(self->translation, self->translation, movement);
 		
 
-		
+		check_attack(self, 14.0f, ENEMY_TEAM);
 		
 		if (check_collision(self)) {
 			movement = gfc_vector3d(0, 0, 0);
@@ -180,6 +188,7 @@ void player_Actions(Entity* self) {
 		if (check_collision(self)) {
 			self->translation = originalTranslation;
 		}
+		check_attack(self, 14.0f, ENEMY_TEAM);
 
 	}
 
@@ -217,7 +226,7 @@ int player_think(Entity* self) {
 		}
 		gfc_vector4d_rotate_world_by_degrees(&self->quaternion, planetUp, selfData->cameraRotation.x);
 
-		selfData->cameraRotation.x *= 0.60;
+		selfData->cameraRotation.x *= 0.25;
 
 		gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
 		GFC_Vector3D forward = { -self->view[1][0], -self->view[1][1], -self->view[1][2] };
@@ -239,7 +248,7 @@ int player_think(Entity* self) {
 
 		GFC_Vector3D up = { self->view[2][0], self->view[2][1], self->view[2][2] };
 		gfc_vector4d_rotate_world_by_degrees(&self->quaternion, planetUp, selfData->cameraRotation.x);
-		selfData->cameraRotation.x *= 0.60;
+		selfData->cameraRotation.x *= 0.25;
 
 		gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
 		GFC_Vector3D forward = { self->view[1][0], self->view[1][1], self->view[1][2] };
@@ -282,5 +291,9 @@ Entity* Player_load_from_file(const char* filename) {
 	player->Update = player_update;
 	player->Think = player_think;
 	player->Collision = NULL;
+	player->Attacked = NULL;
+	player->team = 1;
+	Player = player;
+
 	return player;
 }

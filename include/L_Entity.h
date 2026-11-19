@@ -4,7 +4,8 @@
 
 #include "model.h"
 
-
+#define ENEMY_TEAM 2
+#define PLAYER_TEAM 1
 //typedef struct Entity Entity;
 
 typedef struct Entity
@@ -12,6 +13,8 @@ typedef struct Entity
     Model*          model;
     short int       id;
     int				_refCount;
+
+    int             team;
 
     // properties
     GFC_Color       colorMod;
@@ -33,6 +36,8 @@ typedef struct Entity
     int (*Think)(struct Entity* self);
     int (*Update)(struct Entity* self);
     int (*Collision)(struct Entity* self, struct Entity* target);
+    int (*Attacked)(struct Entity* self, struct Entity* target);
+    int (*free)(struct Entity* self);
     
 
     void*           data;
@@ -40,8 +45,11 @@ typedef struct Entity
 
 }Entity;
 
+int check_attack(Entity* self, float range, int team);
 
 void Entity_init_system(Uint32 modelCount);
+
+void Entity_look_at(Entity* self, Entity* target);
 
 void Entity_Think();
 

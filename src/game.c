@@ -19,6 +19,7 @@
 #include "L_Player.h"
 #include "L_Structure.h"
 #include "L_gameTime.h"
+#include "L_Enemy.h"
 
 #include "gf3d_vgraphics.h"
 #include "gf3d_pipeline.h"
@@ -43,7 +44,7 @@ int main(int argc,char *argv[])
 {
     //local variables
     Sprite *bg;
-    Entity *agu, *agu2, *agu3, *planet;
+    Entity *agu, *agu2, *agu3, *agu4, *agu5, *agu6, *planet;
     GFC_Matrix4 mat = { 0 };
     GFC_Matrix4* view = gf3d_vgraphics_get_view_matrix();
     Uint32 gameTime = SDL_GetTicks();
@@ -61,19 +62,13 @@ int main(int argc,char *argv[])
     gf2d_font_init("config/font.cfg");
     gf2d_actor_init(1000);
     
-    //game init
-    srand(SDL_GetTicks());
-    slog_sync();
-    bg = gf2d_sprite_load_image("images/bg_flat.png");
-    gf2d_mouse_load("actors/mouse.actor");
-    
 
-    
-
-
-    agu2 = Entity_load_from_file("models/dino.model");
-    agu3 = Entity_load_from_file("models/dino.model");
     agu = Player_load_from_file("models/dino.model");
+    agu2 = Enemy_Pinwheel_load_from_file("models/pinwheel.json");
+    agu3 = Enemy_Bracewheel_load_from_file("models/pinwheel.json");
+    agu4 = Enemy_Flywheel_load_from_file("models/pinwheel.json");
+    agu5 = Enemy_Soar_Wheel_load_from_file("models/pinwheel.json");
+    agu6 = Enemy_Shockwheel_load_from_file("models/pinwheel.json");
 
 
    
@@ -82,20 +77,44 @@ int main(int argc,char *argv[])
     planet->translation = gfc_vector3d(1, -250, -24);
     agu3->translation = gfc_vector3d(1, 1, 3);
     agu2->translation = gfc_vector3d(1, 1, -3);
+    agu4->translation = gfc_vector3d(1, -160, -3);
+    agu6->translation = gfc_vector3d(1, -160, -30);
+
 
     agu->gravityPoint = &planet->translation;
     agu->gravityEntity = &planet;
+
+    agu2->gravityPoint = &planet->translation;
+    agu2->gravityEntity = &planet;
+
+    agu3->gravityPoint = &planet->translation;
+    agu3->gravityEntity = &planet;
+
+    agu4->gravityPoint = &planet->translation;
+    agu4->gravityEntity = &planet;
+
+    agu5->gravityPoint = &planet->translation;
+    agu5->gravityEntity = &planet;
+
+    agu6->gravityPoint = &planet->translation;
+    agu6->gravityEntity = &planet;
     
     //agu = gf3d_model_load_from_file("models/dino.model");
     //gfc_matrix4_from_vectors(mat, gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(1, 1, 1));
     gfc_matrix4_view(*view, gfc_vector3d(20, 20, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 1));
 
+    //game init
+    srand(SDL_GetTicks());
+    slog_sync();
+   /* bg = gf2d_sprite_load_image("images/bg_flat.png");*/
+    gf2d_mouse_load("actors/mouse.actor");
     // main game loop 
     
     updateLastFrameTime();
+    slog_sync();
     while(!_done)
     {
-        slog_sync();
+       
         // Frame time update
         updateLastFrameTime();
 
@@ -107,7 +126,7 @@ int main(int argc,char *argv[])
         gf3d_vgraphics_render_start();
                 //2D draws
                 /*gf2d_sprite_draw_image(bg,gfc_vector2d(0,0));*/
-                ///*gf2d_font_draw_line_tag("ALT+F4 to exit",FT_H1,GFC_COLOR_WHITE, gfc_vector2d(10,10));*/
+                gf2d_font_draw_line_tag("ALT+F4 to exit",FT_H1,GFC_COLOR_WHITE, gfc_vector2d(10,10));
                 gf2d_mouse_draw();
                 //3d draws
                 /*gf3d_model_queue_render(agu, mat, GFC_COLOR_WHITE);*/

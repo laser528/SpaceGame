@@ -27,5 +27,8 @@ typedef struct
 
 Entity* Player_load_from_file(const char* filename);
 
+
+Entity* getPlayer();
+
 int player_think(Entity* self);
 int player_update(Entity* self);

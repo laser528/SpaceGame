@@ -14,6 +14,8 @@ typedef struct
 	int             speed;
 	float           gravityRadius; // to create bounding box in gfc primatives
 	
+	int				AbilityStartTime;
+	int             ability;
 
 }StructureData;
 

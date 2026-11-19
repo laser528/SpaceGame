@@ -1,6 +1,6 @@
 #include "L_Structure.h"
 #include "gf3d_obj_load.h"
-
+#include "L_Structure_interactions.h"
 
 
 int checkSphereCollision(Entity* self, Entity* target) {
@@ -73,7 +73,40 @@ Entity* Structure_load_from_file(const char* filename, float scale, float gravit
 	structure->radius = scale;
 	structure->scale = gfc_vector3d(scale, scale, scale);
 	structure->Think = NULL;
+	structure->team = -1;
 	structure->Collision = checkEdgeToMesh;
+
+	return structure;
+}
+
+Entity* Structure_Interaction_load_from_file(const char* filename, float scale, float gravityScale, int interaction) {
+	Entity* structure = Entity_load_from_file(filename);
+
+	structure->data = gfc_allocate_array(sizeof(StructureData), 1);
+
+
+	StructureData* sData = (structure->data);
+
+	//sData.cameraRotation = gfc_vector3d(0, 0, 0);
+	//sData.speed = 250;
+
+
+	sData->gravityRadius = scale * gravityScale;
+	structure->radius = scale;
+	structure->scale = gfc_vector3d(scale, scale, scale);
+
+	switch (interaction) {
+	case 1:
+		structure->Think = boost_panel;
+		break;
+	default:
+		structure->Think = NULL;
+		break;
+	}
+
+	structure->Think = NULL;
+	structure->team = -1;
+	structure->Collision = NULL;
 
 	return structure;
 }
