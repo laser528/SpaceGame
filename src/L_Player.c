@@ -23,8 +23,11 @@ void camera_Update(Entity* self) {
 	gfc_vector3d_normalize(&up);
 
 
-	gfc_vector3d_scale(offset, forward, -20);
-	gfc_vector3d_scale(heightOffset, up, +10);
+	gfc_vector3d_scale(offset, forward, -40);
+	gfc_vector3d_scale(heightOffset, up, +30);
+
+	//gfc_vector3d_scale(offset, forward, -20);
+	//gfc_vector3d_scale(heightOffset, up, +10);
 
 	gfc_vector3d_add(offset, offset, heightOffset);
 
@@ -81,10 +84,42 @@ GFC_Vector3D Player_Gravity(Entity* self) {
 		gfc_vector3d_scale(movement, up, self->radius+0.15f);
 		gfc_vector3d_add(movement, self->lastCollisionPoint, movement);
 		self->translation = movement;
-
+		selfData->jumping = 0;
 	}
 
 	return up;
+}
+
+void player_Actions(Entity* self) {
+	PlayerData* selfData = self->data;
+	GFC_Vector3D movement;
+
+	GFC_Vector3D originalTranslation = self->translation;
+	GFC_Vector3D originalScale = self->scale;
+	GFC_Vector4D originalQuterion = self->quaternion;
+
+	int time = SDL_GetTicks();
+	double jumpProgress = 0;
+
+	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
+
+	// Jump
+	if (gfc_input_key_down("SPACE")) {
+		if (!selfData->jumping) {
+			selfData->jumping = 1;
+			selfData->JumpStartTime = SDL_GetTicks();
+		}
+	}
+	if (time - selfData->JumpStartTime < 500) {
+		jumpProgress = (1 - (time - selfData->JumpStartTime) * 0.002);
+		GFC_Vector3D up = { self->view[2][0], self->view[2][1], self->view[2][2] };
+		gfc_vector3d_scale(movement, up, 1 + 2 * jumpProgress);
+		gfc_vector3d_add(self->translation, self->translation, movement);
+		if (check_collision(self)) {
+			self->translation = originalTranslation;
+		}
+
+	}
 }
 
 int player_think(Entity* self) {
@@ -99,8 +134,9 @@ int player_think(Entity* self) {
 
 	GFC_Vector3D planetUp = Player_Gravity(self);
 
-	gfc_matrix4_from_vectors_q(self->view, self->translation, self->quaternion, self->scale);
+	
 
+	player_Actions(self);
 	
 	// Player input
 	if (gfc_input_key_down("RIGHT")) {
@@ -128,8 +164,6 @@ int player_think(Entity* self) {
 			return 0;
 		}
 			
-
-
 		return 1;
 
 	}
@@ -172,8 +206,11 @@ Entity* Player_load_from_file(const char* filename) {
 
 	pData->cameraRotation = gfc_vector3d(0, 0, 0);
 	pData->speed = 1;
-	player->radius = 7.0f;
 
+	pData->JumpStartTime = 0;
+	pData->jumping = 0;
+
+	player->radius = 7.0f;
 	player->Update = player_update;
 	player->Think = player_think;
 	player->Collision = NULL;

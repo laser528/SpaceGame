@@ -11,6 +11,8 @@ typedef struct
 	int             health;
 	float           speed;
 	
+	int				JumpStartTime;
+	int             jumping;
 
 	GFC_Vector3D    cameraRotation;
 	
