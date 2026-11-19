@@ -14,6 +14,11 @@ typedef struct
 	int				JumpStartTime;
 	int             jumping;
 
+	int             dashStartTime;
+	int             dashing;
+
+	int             groundPound;
+
 	GFC_Vector3D    cameraRotation;
 	
 }PlayerData;
