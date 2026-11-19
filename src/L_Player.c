@@ -7,6 +7,9 @@ Entity* getPlayer() {
 	return Player;
 }
 
+GFC_Vector3D gameWorldExtents = {500};
+
+
 void camera_Update(Entity* self) {
 	GFC_Matrix4* view = gf3d_vgraphics_get_view_matrix();
 	GFC_Vector3D offset = { 0 };

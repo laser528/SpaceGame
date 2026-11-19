@@ -20,6 +20,7 @@
 #include "L_Structure.h"
 #include "L_gameTime.h"
 #include "L_Enemy.h"
+#include "L_Structure.h"
 
 #include "gf3d_vgraphics.h"
 #include "gf3d_pipeline.h"
@@ -44,7 +45,8 @@ int main(int argc,char *argv[])
 {
     //local variables
     Sprite *bg;
-    Entity *agu, *agu2, *agu3, *agu4, *agu5, *agu6, *planet;
+    Entity *agu, *agu2, *agu3, *agu4, *agu5, *agu6, *struc, *struc1, * struc2, * struc3, * struc4, *planet;
+
     GFC_Matrix4 mat = { 0 };
     GFC_Matrix4* view = gf3d_vgraphics_get_view_matrix();
     Uint32 gameTime = SDL_GetTicks();
@@ -70,6 +72,12 @@ int main(int argc,char *argv[])
     agu5 = Enemy_Soar_Wheel_load_from_file("models/pinwheel.json");
     agu6 = Enemy_Shockwheel_load_from_file("models/pinwheel.json");
 
+    struc = Structure_Interaction_load_from_file("models/interactable.json", 4, 2, 1);
+    struc1 = Structure_Interaction_load_from_file("models/interactable.json", 4, 2, 2);
+    struc2 = Structure_Interaction_load_from_file("models/interactable.json", 4, 2, 3);
+    struc3 = Structure_Interaction_load_from_file("models/interactable.json", 4, 2, 4);
+    struc4 = Structure_Interaction_load_from_file("models/interactable.json", 4, 2, 5);
+  
 
    
     planet = Structure_load_from_file("models/planet.json", 160, 2);
@@ -79,6 +87,14 @@ int main(int argc,char *argv[])
     agu2->translation = gfc_vector3d(1, 1, -3);
     agu4->translation = gfc_vector3d(1, -160, -3);
     agu6->translation = gfc_vector3d(1, -160, -30);
+
+    struc->translation = gfc_vector3d(1, -160, -80);
+    struc1->translation = gfc_vector3d(30, -160, -80);
+    struc2->translation = gfc_vector3d(60, -180, -80);
+    struc3->translation = gfc_vector3d(30, -200, 80);
+    struc4->translation = gfc_vector3d(1, -200, 80);
+
+
 
 
     agu->gravityPoint = &planet->translation;
@@ -98,6 +114,24 @@ int main(int argc,char *argv[])
 
     agu6->gravityPoint = &planet->translation;
     agu6->gravityEntity = &planet;
+
+
+    struc->gravityPoint = &planet->translation;
+    struc->gravityEntity = &planet;
+
+    struc1->gravityPoint = &planet->translation;
+    struc1->gravityEntity = &planet;
+
+    struc2->gravityPoint = &planet->translation;
+    struc2->gravityEntity = &planet;
+
+    struc3->gravityPoint = &planet->translation;
+    struc3->gravityEntity = &planet;
+
+    struc4->gravityPoint = &planet->translation;
+    struc4->gravityEntity = &planet;
+
+
     
     //agu = gf3d_model_load_from_file("models/dino.model");
     //gfc_matrix4_from_vectors(mat, gfc_vector3d(0, 0, 0), gfc_vector3d(0, 0, 0), gfc_vector3d(1, 1, 1));

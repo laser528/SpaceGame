@@ -94,17 +94,36 @@ Entity* Structure_Interaction_load_from_file(const char* filename, float scale, 
 	sData->gravityRadius = scale * gravityScale;
 	structure->radius = scale;
 	structure->scale = gfc_vector3d(scale, scale, scale);
+	sData->ability = 0;
 
 	switch (interaction) {
 	case 1:
+		structure->colorMod = GFC_COLOR_BLUE;
 		structure->Think = boost_panel;
 		break;
+	case 2:
+		structure->colorMod = GFC_COLOR_BROWN;
+		structure->Think = tar_panel;
+		break;
+	case 3:
+		structure->colorMod = GFC_COLOR_GREEN;
+		structure->Think = bounce_panel;
+		break;
+	case 4:
+		structure->colorMod = GFC_COLOR_MAGENTA;
+		structure->Think = Zero_G_panel;
+		break;
+	case 5:
+		structure->colorMod = GFC_COLOR_DARKYELLOW;
+		structure->Think = G_Switcher_panel;
+		break;
+
 	default:
 		structure->Think = NULL;
 		break;
 	}
 
-	structure->Think = NULL;
+	/*structure->Think = NULL;*/
 	structure->team = -1;
 	structure->Collision = NULL;
 

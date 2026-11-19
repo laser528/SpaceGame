@@ -28,6 +28,7 @@ typedef struct Entity
     GFC_Vector3D    scale;
     GFC_Matrix4     view;
 
+    GFC_Vector3D     modifiableGravityPoint;
     GFC_Vector3D*    gravityPoint;
     struct Entity*   gravityEntity;
     GFC_Vector3D     lastCollisionPoint;

@@ -22,7 +22,7 @@ typedef struct
 
 
 Entity* Structure_load_from_file(const char* filename, float scale, float gravityScale);
-
+Entity* Structure_Interaction_load_from_file(const char* filename, float scale, float gravityScale, int interaction);
 
 
 //int player_think(Entity* self);
